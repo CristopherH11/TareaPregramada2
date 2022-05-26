@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include "../src/empleado.h"
+#include "../src/empleadoPorHoras.h"
 #include <string>
 
 TEST(Test_Empleado, test_constructor){

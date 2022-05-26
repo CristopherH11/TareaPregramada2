@@ -1,24 +1,34 @@
 #include "empleado.h"
+#include "empleadoNomina.h"
+#include "empleadoPorHoras.h"
+#include "planilla.h"
 #include <iostream>
 #include <sstream>
-
-using namespace std;
+#include <fstream>
 
 int main (){
+    Planilla *planilla = new Planilla();
 
-    string prueba = "1 Denis Tyler denis_tyler@biz.com 1 1";
-    istringstream streamStringsEntrada(prueba);
-    ostringstream streamStringsSalida {};
-    Empleado *empleado = new Empleado();
+    ifstream archivoPlanilla("personas.txt", std::ifstream::in);
+    ofstream reporte("reporte.csv", std::ifstream::out);
+    
 
-    streamStringsEntrada >> empleado;
-    streamStringsSalida << empleado;
+    if (!archivoPlanilla.is_open()){
+        std::cerr << "Error abriendo archivo categorias.txt" << std::endl;
+        return -1;
+    }
 
-    cout << streamStringsSalida.str();
+    archivoPlanilla >> planilla;
 
-    delete empleado;
+    if (!reporte.is_open())
+    {
+        std::cerr << "Error abriendo archivo reporteCatalogo.txt" << std::endl;
+        return -1;
+    }
+    
+    reporte << planilla;
+    reporte.close();
 
-
-
+    delete planilla;
 
 }
