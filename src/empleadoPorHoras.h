@@ -10,7 +10,7 @@ class EmpleadoPorHoras : public Empleado {
 
     public:
     EmpleadoPorHoras();
-    virtual void calcularPago(int horas, float costo);
+    virtual void calcularPago();
 
 };
 

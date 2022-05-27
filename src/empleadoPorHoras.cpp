@@ -5,8 +5,9 @@ EmpleadoPorHoras::EmpleadoPorHoras(){
 
 }
 
-void EmpleadoPorHoras::calcularPago(int horas, float costo){
-    float pagoTotal= horas * costo;
+void EmpleadoPorHoras::calcularPago(){
+    double pagoTotal= this->costo*this->horas;
+    this->impuestos= 0;
     this->pagomensual= pagoTotal;
 
 }

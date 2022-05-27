@@ -16,6 +16,9 @@ class Empleado {
     string apellido;
     string email;
     float pagomensual;
+    int horas;
+    double costo;
+    double impuestos;
     int tipo;
     int idsuperior;
     vector<Empleado *> empleados;
@@ -28,11 +31,14 @@ class Empleado {
     friend istream& operator >> (istream &i, Empleado *empleado);
     friend ostream& operator << (ostream &o, const Empleado *empleado);
     virtual void calcularPago() {};
-    virtual float obtenerPago();
+    virtual double obtenerPago();
+    virtual double obtenerImpuestos();
     virtual string obtenerNombre();
     virtual int obtenerTipo();
     virtual int obtenerId();
     virtual int obtenerIdSuperior();
+    virtual void asignarHoras(int horas);
+    virtual void asignarCosto(float costo);
     virtual void asignarSuperior(Empleado* empleado);
     virtual void insertarEmpleado(Empleado* empleado);
 };

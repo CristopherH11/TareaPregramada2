@@ -17,9 +17,9 @@ class Planilla {
     protected:
     Empleado *jefe;
     map<int, Empleado *> indiceIds;
-    int subtotal;
-    int impuestos;
-    int total;
+    double subTotal;
+    double impuestos;
+    double total;
     vector<Empleado *> empleadosTotales;
 
 
@@ -28,6 +28,9 @@ class Planilla {
     ~Planilla();
 
     void agregarEmpleado(Empleado* empleado);
+    void calcularSubtotal();
+    void calcularImpuestos();
+    void calcularTotal();
 
     friend istream& operator >> (istream &i, Planilla *planilla);
     friend ostream& operator << (ostream &o, const Planilla *planilla);

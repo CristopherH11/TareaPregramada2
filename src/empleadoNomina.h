@@ -10,7 +10,7 @@ class EmpleadoNomina : public Empleado {
 
     public:
     EmpleadoNomina();
-    virtual void calcularPago(float costo);
+    virtual void calcularPago();
 
 };
 

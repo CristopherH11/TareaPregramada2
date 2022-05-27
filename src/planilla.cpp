@@ -1,5 +1,6 @@
 #include "planilla.h"
 
+using namespace std;
 
 Planilla::Planilla(){
     Empleado *jefe= nullptr;
@@ -29,6 +30,25 @@ void Planilla::agregarEmpleado(Empleado* empleado){
         this->indiceIds.insert(std::pair<int, Empleado*>(idNodo, empleado) );
         this->empleadosTotales.push_back(empleado);
 
+    }
+}
+
+void Planilla::calcularSubtotal(){
+    this->subTotal=0;
+    for (Empleado *empleado : this->empleadosTotales){
+        this->subTotal += empleado->obtenerPago();
+    }
+}
+
+void Planilla::calcularImpuestos(){
+    for (Empleado *empleado : this->empleadosTotales){
+        this->impuestos += empleado->obtenerImpuestos();
+    }
+}
+
+void Planilla::calcularTotal(){
+    for (Empleado *empleado : this->empleadosTotales){
+        this->total= this->impuestos + this->subTotal;
     }
 }
 
@@ -62,6 +82,10 @@ ostream& operator << (ostream &o, const Planilla *planilla){
     for (Empleado *empleado : planilla->empleadosTotales){
         o << empleado << endl;
     }
+    o << fixed;
+    o << "El subtotal del reporte es: " << planilla->subTotal << endl;
+    o << "Los impuestos a pagar del reporte son: " << planilla->impuestos << endl;
+    o << "El total del reporte es: " << planilla->total << endl;
 
     return o;
 
@@ -77,10 +101,10 @@ istream& operator > (istream &i, Planilla *planilla){
         std::istringstream streamLinea(linea);
         streamLinea >> id >> costo;
 
-        Empleado& empleadoNuevo = planilla->indiceIds.at(id);
-        empleadoNuevo->calcularPago(costo);
+        Empleado* empleadoNuevo = planilla->indiceIds.at(id);
+        empleadoNuevo->asignarCosto(costo);
+        empleadoNuevo->calcularPago();
     }
-
     return i;
 }
 
@@ -93,11 +117,15 @@ istream& operator < (istream &i, Planilla *planilla){
         float costo;
 
         std::istringstream streamLinea(linea);
-        streamLinea >> id >> horas >> costo;
+        streamLinea >> id >> costo >> horas;
 
-        Empleado& empleadoNuevo = planilla->indiceIds.at(id);
-        empleadoNuevo->calcularPago(horas, costo);
+        Empleado* empleadoNuevo = planilla->indiceIds.at(id);
+        empleadoNuevo->asignarCosto(costo);
+        empleadoNuevo->asignarHoras(horas);
+        empleadoNuevo->calcularPago();
     }
-
+    planilla->calcularSubtotal(); 
+    planilla->calcularImpuestos();
+    planilla->calcularTotal();
     return i;
 }

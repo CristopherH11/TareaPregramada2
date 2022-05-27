@@ -4,9 +4,14 @@ Empleado::~Empleado() {
     
 }
 
-float Empleado::obtenerPago(){
+double Empleado::obtenerPago(){
 
     return this->pagomensual;
+}
+
+double Empleado::obtenerImpuestos(){
+
+    return this->impuestos;
 }
 
 string Empleado::obtenerNombre(){
@@ -27,6 +32,14 @@ int Empleado::obtenerId(){
 int Empleado::obtenerIdSuperior(){
     return this->idsuperior;
 
+}
+
+void Empleado::asignarHoras(int horasNuevas){
+    this->horas= horasNuevas;
+}
+
+void Empleado::asignarCosto(float costoNuevo){
+    this->costo= costoNuevo;
 }
 
 void Empleado::asignarSuperior(Empleado* nuevoSuperior){

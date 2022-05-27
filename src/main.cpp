@@ -6,13 +6,15 @@
 #include <sstream>
 #include <fstream>
 
+using namespace std;
+
 int main (){
     Planilla *planilla = new Planilla();
 
     ifstream archivoPlanilla("personas.txt", std::ifstream::in);
 
     if (!archivoPlanilla.is_open()){
-        std::cerr << "Error abriendo archivo categorias.txt" << std::endl;
+        cerr << "Error abriendo archivo categorias.txt" << endl;
         return -1;
     }
     
@@ -23,7 +25,7 @@ int main (){
     ifstream archivoPagosNomina("nomina.txt", std::ifstream::in);
     
     if (!archivoPagosNomina.is_open()){
-        std::cerr << "Error abriendo archivo archivoPagosNomina.txt" << std::endl;
+        cerr << "Error abriendo archivo archivoPagosNomina.txt" << endl;
         return -1;
     }
 
@@ -34,18 +36,18 @@ int main (){
     ifstream archivoPagosPorHoras("horastrabajadas.txt", std::ifstream::in);
     
     if (!archivoPagosPorHoras.is_open()){
-        std::cerr << "Error abriendo archivo archivoPagosPorHoras.txt" << std::endl;
+        cerr << "Error abriendo archivo archivoPagosPorHoras.txt" << endl;
         return -1;
     }
 
     archivoPagosPorHoras < planilla;
 
     archivoPagosPorHoras.close();
-    
+
     ofstream reporte("reporte.csv", std::ifstream::out);
     if (!reporte.is_open())
     {
-        std::cerr << "Error abriendo archivo reporte.txt" << std::endl;
+        cerr << "Error abriendo archivo reporte.txt" << endl;
         return -1;
     }
     reporte << planilla;

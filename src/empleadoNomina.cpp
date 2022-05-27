@@ -5,8 +5,9 @@ EmpleadoNomina::EmpleadoNomina(){
 
 }
 
-void EmpleadoNomina::calcularPago(float costo){
-    float pagoTotal= costo-costo*0.07;
+void EmpleadoNomina::calcularPago(){
+    this->impuestos= this->costo*0.07;
+    double pagoTotal= this->costo-this->impuestos;
     this->pagomensual= pagoTotal;
 
 }
