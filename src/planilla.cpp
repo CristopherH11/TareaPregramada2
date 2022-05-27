@@ -17,7 +17,7 @@ void Planilla::agregarEmpleado(Empleado* empleado){
         this->jefe= empleado;
         empleado->asignarSuperior(empleado);
         int idNodo= empleado->obtenerId();
-        this->indiceIds.insert(std::pair<int, Empleado*>(idNodo, jefe) );
+        this->indiceIds.insert(std::pair<int, Empleado*>(idNodo, jefe));
         this->empleadosTotales.push_back(empleado);
 
     }else{
@@ -42,13 +42,14 @@ istream& operator >> (istream &i, Planilla *planilla){
         std::istringstream streamLinea(linea);
         streamLinea >> basura >> basura >> basura >> basura >> tipo >> basura;
 
+        std::istringstream streamLinea2(linea);
         if (tipo==1){
             EmpleadoNomina *nuevoEmpleado = new EmpleadoNomina();
-            streamLinea >> nuevoEmpleado;
+            streamLinea2 >> nuevoEmpleado;
             planilla->agregarEmpleado(nuevoEmpleado);
         }else {
             EmpleadoPorHoras *nuevoEmpleado = new EmpleadoPorHoras();
-            streamLinea >> nuevoEmpleado;
+            streamLinea2 >> nuevoEmpleado;
             planilla->agregarEmpleado(nuevoEmpleado);
         }
     }
@@ -64,4 +65,39 @@ ostream& operator << (ostream &o, const Planilla *planilla){
 
     return o;
 
+}
+
+istream& operator > (istream &i, Planilla *planilla){
+    string linea;
+
+    while (std::getline(i, linea)) {
+        int id;
+        float costo;
+
+        std::istringstream streamLinea(linea);
+        streamLinea >> id >> costo;
+
+        Empleado& empleadoNuevo = planilla->indiceIds.at(id);
+        empleadoNuevo->calcularPago(costo);
+    }
+
+    return i;
+}
+
+istream& operator < (istream &i, Planilla *planilla){
+    string linea;
+
+    while (std::getline(i, linea)) {
+        int id;
+        int horas;
+        float costo;
+
+        std::istringstream streamLinea(linea);
+        streamLinea >> id >> horas >> costo;
+
+        Empleado& empleadoNuevo = planilla->indiceIds.at(id);
+        empleadoNuevo->calcularPago(horas, costo);
+    }
+
+    return i;
 }

@@ -13,6 +13,8 @@
 using namespace std;
 
 class Planilla {
+
+    protected:
     Empleado *jefe;
     map<int, Empleado *> indiceIds;
     int subtotal;
@@ -29,6 +31,8 @@ class Planilla {
 
     friend istream& operator >> (istream &i, Planilla *planilla);
     friend ostream& operator << (ostream &o, const Planilla *planilla);
+    friend istream& operator > (istream &i, Planilla *planilla);
+    friend istream& operator < (istream &i, Planilla *planilla);
        
 };
 

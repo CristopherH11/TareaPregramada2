@@ -10,7 +10,7 @@ float Empleado::obtenerPago(){
 }
 
 string Empleado::obtenerNombre(){
-    string nombreCompleto = this->nombre + " " + this->nombre;
+    string nombreCompleto = this->nombre + " " + this->apellido;
     return nombreCompleto;
 }
 
@@ -45,7 +45,9 @@ istream& operator >> (istream &i, Empleado *empleado){
 }
 
 ostream& operator << (ostream &o, const Empleado *empleado){
-    o << empleado->id << "," << empleado->nombre << "," << empleado->apellido << "," << empleado->email << "," << empleado->tipo << "," << empleado->idsuperior;
+
+
+    o << empleado->id << "," << empleado->nombre << " " << empleado->apellido << "," << empleado->superior->obtenerNombre() << "," << empleado->pagomensual;
 
     return o;
 }
