@@ -40,16 +40,33 @@ void Planilla::calcularSubtotal(){
     }
 }
 
+double Planilla::obtenerSubtotal(){
+    return this->subTotal;
+}
+
 void Planilla::calcularImpuestos(){
     for (Empleado *empleado : this->empleadosTotales){
         this->impuestos += empleado->obtenerImpuestos();
     }
 }
 
+double Planilla::obtenerImpuestos(){
+    return this->impuestos;
+}
+
 void Planilla::calcularTotal(){
     for (Empleado *empleado : this->empleadosTotales){
         this->total= this->impuestos + this->subTotal;
     }
+}
+
+double Planilla::obtenerTotal(){
+    return this->total;
+}
+
+int Planilla::cantidadPlanilla(){
+    return this->empleadosTotales.size();
+
 }
 
 istream& operator >> (istream &i, Planilla *planilla){

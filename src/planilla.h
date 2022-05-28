@@ -27,10 +27,14 @@ class Planilla {
     Planilla();
     ~Planilla();
 
+    int cantidadPlanilla();
     void agregarEmpleado(Empleado* empleado);
     void calcularSubtotal();
+    double obtenerSubtotal();
     void calcularImpuestos();
+    double obtenerImpuestos();
     void calcularTotal();
+    double obtenerTotal();
 
     friend istream& operator >> (istream &i, Planilla *planilla);
     friend ostream& operator << (ostream &o, const Planilla *planilla);

@@ -12,8 +12,12 @@ test:
 	g++ -g -c --std=c++17 src/empleado.cpp -o bin/empleado.o
 	g++ -g -c --std=c++17 src/empleadoNomina.cpp -o bin/empleadoNomina.o
 	g++ -g -c --std=c++17 src/empleadoPorHoras.cpp -o bin/empleadoPorHoras.o
+	g++ -g -c --std=c++17 src/planilla.cpp -o bin/planilla.o
 	g++ -g -c --std=c++17 tests/test_empleado.cpp -o bin/test_empleado.o
-	g++ -g -o bin/tests bin/empleado.o bin/test_empleado.o bin/empleadoNomina.o bin/empleadoPorHoras.o -lgtest -lgtest_main -lpthread
+	g++ -g -c --std=c++17 tests/test_empleadoNomina.cpp -o bin/test_empleadoNomina.o
+	g++ -g -c --std=c++17 tests/test_empleadoPorHoras.cpp -o bin/test_empleadoPorHoras.o
+	g++ -g -c --std=c++17 tests/test_planilla.cpp -o bin/test_planilla.o
+	g++ -g -o bin/tests bin/empleado.o bin/test_empleado.o bin/test_planilla.o bin/planilla.o bin/test_empleadoPorHoras.o bin/test_empleadoNomina.o bin/empleadoNomina.o bin/empleadoPorHoras.o -lgtest -lgtest_main -lpthread
 
 clean:
 	rm -Rf bin
