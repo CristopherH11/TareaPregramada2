@@ -19,11 +19,6 @@ string Empleado::obtenerNombre(){
     return nombreCompleto;
 }
 
-int Empleado::obtenerTipo(){
-    return this->tipo;
-
-}
-
 int Empleado::obtenerId(){
     return this->id;
 

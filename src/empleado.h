@@ -34,7 +34,6 @@ class Empleado {
     virtual double obtenerPago();
     virtual double obtenerImpuestos();
     virtual string obtenerNombre();
-    virtual int obtenerTipo();
     virtual int obtenerId();
     virtual int obtenerIdSuperior();
     virtual void asignarHoras(int horas);
