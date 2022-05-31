@@ -39,30 +39,27 @@ TEST(test_planilla, test_calcularSubtotal){
 
     float costo;
     int id;
-    int horas;
 
     string prueba = "1 Denis Tyler denis_tyler@biz.com 1 1";
     istringstream streamStringsEntrada(prueba);
     EmpleadoPorHoras *empleado = new EmpleadoPorHoras();
     streamStringsEntrada >> empleado;
-    string prueba4 = "459 30.58 74";
+    string prueba4 = "1 4600.98";
     istringstream streamStringsEntrada2(prueba4);
-    streamStringsEntrada2 >> id >> costo >> horas;
+    streamStringsEntrada2 >> id >> costo;
 
     empleado->asignarCosto(costo);
-    empleado->asignarHoras(horas);
     empleado->calcularPago();
 
     string prueba2 = "2 Clarissa Parker clarissa_parker@biz.com 1 1";
     istringstream streamStringsEntrada3(prueba2);
-    EmpleadoPorHoras *empleado2 = new EmpleadoPorHoras();
+    EmpleadoNomina *empleado2 = new EmpleadoNomina();
     streamStringsEntrada3 >> empleado;
-    string prueba5 = "459 80.58 30";
+    string prueba5 = "2 3097.50";
     istringstream streamStringsEntrada4(prueba5);
-    streamStringsEntrada4 >> id >> costo >> horas;
+    streamStringsEntrada4 >> id >> costo;
 
     empleado2->asignarCosto(costo);
-    empleado2->asignarHoras(horas);
     empleado2->calcularPago();
 
     planilla->agregarEmpleado(empleado);
@@ -82,30 +79,27 @@ TEST(test_planilla, test_calcularImpuestos){
 
     float costo;
     int id;
-    int horas;
 
     string prueba = "1 Denis Tyler denis_tyler@biz.com 1 1";
     istringstream streamStringsEntrada(prueba);
     EmpleadoPorHoras *empleado = new EmpleadoPorHoras();
     streamStringsEntrada >> empleado;
-    string prueba4 = "459 30.58 74";
+    string prueba4 = "1 4600.98";
     istringstream streamStringsEntrada2(prueba4);
-    streamStringsEntrada2 >> id >> costo >> horas;
+    streamStringsEntrada2 >> id >> costo;
 
     empleado->asignarCosto(costo);
-    empleado->asignarHoras(horas);
     empleado->calcularPago();
 
     string prueba2 = "2 Clarissa Parker clarissa_parker@biz.com 1 1";
     istringstream streamStringsEntrada3(prueba2);
-    EmpleadoPorHoras *empleado2 = new EmpleadoPorHoras();
+    EmpleadoNomina *empleado2 = new EmpleadoNomina();
     streamStringsEntrada3 >> empleado;
-    string prueba5 = "459 80.58 30";
+    string prueba5 = "2 3097.50";
     istringstream streamStringsEntrada4(prueba5);
-    streamStringsEntrada4 >> id >> costo >> horas;
+    streamStringsEntrada4 >> id >> costo;
 
     empleado2->asignarCosto(costo);
-    empleado2->asignarHoras(horas);
     empleado2->calcularPago();
 
     planilla->agregarEmpleado(empleado);
@@ -126,34 +120,32 @@ TEST(test_planilla, test_calcularTotal){
 
     float costo;
     int id;
-    int horas;
 
     string prueba = "1 Denis Tyler denis_tyler@biz.com 1 1";
     istringstream streamStringsEntrada(prueba);
     EmpleadoPorHoras *empleado = new EmpleadoPorHoras();
     streamStringsEntrada >> empleado;
-    string prueba4 = "459 30.58 74";
+    string prueba4 = "1 4600.98";
     istringstream streamStringsEntrada2(prueba4);
-    streamStringsEntrada2 >> id >> costo >> horas;
+    streamStringsEntrada2 >> id >> costo;
 
     empleado->asignarCosto(costo);
-    empleado->asignarHoras(horas);
     empleado->calcularPago();
 
     string prueba2 = "2 Clarissa Parker clarissa_parker@biz.com 1 1";
     istringstream streamStringsEntrada3(prueba2);
-    EmpleadoPorHoras *empleado2 = new EmpleadoPorHoras();
+    EmpleadoNomina *empleado2 = new EmpleadoNomina();
     streamStringsEntrada3 >> empleado;
-    string prueba5 = "459 80.58 30";
+    string prueba5 = "2 3097.50";
     istringstream streamStringsEntrada4(prueba5);
-    streamStringsEntrada4 >> id >> costo >> horas;
+    streamStringsEntrada4 >> id >> costo;
 
     empleado2->asignarCosto(costo);
-    empleado2->asignarHoras(horas);
     empleado2->calcularPago();
 
     planilla->agregarEmpleado(empleado);
     planilla->agregarEmpleado(empleado2);
+
 
     planilla->calcularTotal();
 
