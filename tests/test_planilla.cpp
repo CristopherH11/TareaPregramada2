@@ -66,6 +66,8 @@ TEST(test_planilla, test_calcularSubtotal){
     planilla->agregarEmpleado(empleado2);
 
     planilla->calcularSubtotal();
+    planilla->calcularImpuestos();
+    planilla->calcularTotal();
 
     double actual = planilla->obtenerSubtotal();
     double esperada = 9101.447;
@@ -105,7 +107,9 @@ TEST(test_planilla, test_calcularImpuestos){
     planilla->agregarEmpleado(empleado);
     planilla->agregarEmpleado(empleado2);
 
+    planilla->calcularSubtotal();
     planilla->calcularImpuestos();
+    planilla->calcularTotal();
 
     double actual = planilla->obtenerImpuestos();
     double esperada = 332.773;
@@ -146,7 +150,8 @@ TEST(test_planilla, test_calcularTotal){
     planilla->agregarEmpleado(empleado);
     planilla->agregarEmpleado(empleado2);
 
-
+    planilla->calcularSubtotal();
+    planilla->calcularImpuestos();
     planilla->calcularTotal();
 
     double actual = planilla->obtenerTotal();
