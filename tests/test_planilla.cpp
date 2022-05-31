@@ -54,7 +54,7 @@ TEST(test_planilla, test_calcularSubtotal){
     string prueba2 = "2 Clarissa Parker clarissa_parker@biz.com 1 1";
     istringstream streamStringsEntrada3(prueba2);
     EmpleadoNomina *empleado2 = new EmpleadoNomina();
-    streamStringsEntrada3 >> empleado;
+    streamStringsEntrada3 >> empleado2;
     string prueba5 = "2 3097.50";
     istringstream streamStringsEntrada4(prueba5);
     streamStringsEntrada4 >> id >> costo;
@@ -70,7 +70,7 @@ TEST(test_planilla, test_calcularSubtotal){
     planilla->calcularTotal();
 
     double actual = planilla->obtenerSubtotal();
-    double esperada = 9101.447;
+    double esperada = 2880.675;
 
     EXPECT_FLOAT_EQ(actual, esperada);
 
@@ -96,7 +96,7 @@ TEST(test_planilla, test_calcularImpuestos){
     string prueba2 = "2 Clarissa Parker clarissa_parker@biz.com 1 1";
     istringstream streamStringsEntrada3(prueba2);
     EmpleadoNomina *empleado2 = new EmpleadoNomina();
-    streamStringsEntrada3 >> empleado;
+    streamStringsEntrada3 >> empleado2;
     string prueba5 = "2 3097.50";
     istringstream streamStringsEntrada4(prueba5);
     streamStringsEntrada4 >> id >> costo;
@@ -112,7 +112,7 @@ TEST(test_planilla, test_calcularImpuestos){
     planilla->calcularTotal();
 
     double actual = planilla->obtenerImpuestos();
-    double esperada = 332.773;
+    double esperada = 216.825;
 
     EXPECT_FLOAT_EQ(actual, esperada);
 
@@ -139,7 +139,7 @@ TEST(test_planilla, test_calcularTotal){
     string prueba2 = "2 Clarissa Parker clarissa_parker@biz.com 1 1";
     istringstream streamStringsEntrada3(prueba2);
     EmpleadoNomina *empleado2 = new EmpleadoNomina();
-    streamStringsEntrada3 >> empleado;
+    streamStringsEntrada3 >> empleado2;
     string prueba5 = "2 3097.50";
     istringstream streamStringsEntrada4(prueba5);
     streamStringsEntrada4 >> id >> costo;
@@ -155,7 +155,7 @@ TEST(test_planilla, test_calcularTotal){
     planilla->calcularTotal();
 
     double actual = planilla->obtenerTotal();
-    double esperada = 9434.22;
+    double esperada = 3097.5;
 
     EXPECT_FLOAT_EQ(actual, esperada);
 
