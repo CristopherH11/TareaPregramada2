@@ -100,12 +100,8 @@ ostream& operator << (ostream &o, const Planilla *planilla){
         o << empleado << endl;
     }
     o << fixed;
-    o << "El subtotal del reporte es: " << planilla->subTotal << endl;
-    o << "Los impuestos a pagar del reporte son: " << planilla->impuestos << endl;
-    o << "El total del reporte es: " << planilla->total << endl;
 
     return o;
-
 }
 
 istream& operator > (istream &i, Planilla *planilla){
