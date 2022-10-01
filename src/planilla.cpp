@@ -76,7 +76,7 @@ istream& operator >> (istream &i, Planilla *planilla){
         string basura;
         int tipo;
 
-        std::istringstream streamLinea(linea);
+        std::istringstream streamLinea(linea); // Prueba merge
         streamLinea >> basura >> basura >> basura >> basura >> tipo >> basura;
 
         std::istringstream streamLinea2(linea);
