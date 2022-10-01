@@ -115,9 +115,6 @@ istream& operator > (istream &i, Planilla *planilla){
         int id;
         float costo;
 
-        std::istringstream streamLinea(linea);
-        streamLinea >> id >> costo;
-
         Empleado* empleadoNuevo = planilla->indiceIds.at(id);
         empleadoNuevo->asignarCosto(costo);
         empleadoNuevo->calcularPago();
